@@ -10,9 +10,10 @@ public class Main {
     static int n = 0;
     public static void main(String[] args) {
 	// write your code here
-        System.out.println(permutation("AABC"));
-        System.out.println(permutationDistinct("AABC"));
-        System.out.println(m + ","+ n);
+        //System.out.println(permutation("AABC"));
+        //System.out.println(permutationDistinct("AABC"));
+        //System.out.println(m + ","+ n);
+        System.out.println(printBinary(3));
 
     }
 
@@ -113,6 +114,28 @@ n++;
 
     }
 
+    public static List<String> printBinary(int digits) {
+        List<String> list = new ArrayList<>();
+
+        printBinaryHelper(digits, new StringBuilder(), list);
+
+        return list;
+    }
+
+    private static void printBinaryHelper(int digits, StringBuilder prefix, List<String> list) {
+        if (digits == 0) {
+            list.add(prefix.toString());
+            return;
+        }
+        digits--;
+        prefix.append("0");
+        printBinaryHelper(digits, prefix, list);
+        prefix.deleteCharAt(prefix.length()-1);
+        prefix.append("1");
+        printBinaryHelper(digits, prefix, list);
+        prefix.deleteCharAt(prefix.length()-1);
+
+    }
 
 
 }
